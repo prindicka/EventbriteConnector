@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <template name="eventAccessCodes" xmlns="http://ws.apache.org/ns/synapse">
+        <parameter name="EventID" description="Full-text search query string." />
+        <!-- <parameter name="accessToken" description="accessToken." />-->
+        <!--<parameter name="accessToken" description="accessToken." />-->
+        <sequence>
+            <property name="uri.var.EventID" expression="$func:EventID" />
+            <property name="uri.var.accessToken" expression="$func:accessToken" />
+            <call>
+
+                <endpoint>
+                    <http method="get"
+                          uri-template="https://www.eventbriteapi.com/v3/events/{uri.var.EventID}/access_codes/?token={uri.var.eventbrite.accessToken}" />
+                </endpoint>
+            </call>
+        </sequence>
+    </template>
